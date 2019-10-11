@@ -1,0 +1,32 @@
+{
+  "name": "flight-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "dev": "npm run webpack -- --mode development --watch",
+    "build": "npm run webpack --config webpack.config.js",
+    "doc": "apidoc -o public/apidoc",
+    "mydoc": "apidoc -o public"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.0",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
+    "nodemon": "^1.19.3"
+  },
+  "devDependencies": {
+    "grunt-apidoc": "^0.11.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8"
+  }
+}

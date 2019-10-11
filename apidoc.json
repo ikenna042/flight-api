@@ -1,0 +1,10 @@
+{
+    "name": "FLIGHT API v1",
+    "version": "0.1.0",
+    "description": "API for flight management",
+    "apidoc": {
+        "title": "Flight ApiDoc",
+    "url" : "https://shop-api-doc.herokuapp.com/"
+    }
+  }
+  
