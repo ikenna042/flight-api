@@ -7,13 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
     "dev": "npm run webpack -- --mode development --watch",
-    "build": "npm run webpack --config webpack.config.js",
+    "build": "babel src -d build",
+    "dist": "babel src -d dist",
+    "start": "npm run dist && nodemon dist/index.js",
     "doc": "apidoc -o public/apidoc",
     "mydoc": "apidoc -o public"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^16.1.7",
     "babel": "^6.23.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
@@ -25,6 +28,11 @@
     "nodemon": "^1.19.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "grunt-apidoc": "^0.11.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8"
