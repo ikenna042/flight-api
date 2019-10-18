@@ -9,31 +9,34 @@
 
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const Schema = mongoose;
-const ObjectId = Schema.Types;
+// const Schema = mongoose;
+// const ObjectId = Schema.Types;
 
 const staffSchema = mongoose.Schema({
-    // surname: { type: String, required: false },
-    // firstname: { type: String, required: false },
-    // middlename: { type: String },
-    // gender: { type: String, required: false },
-    // birth_date: { type: Date, required: false },
-    // phone: {
-    //     type: String,
-    //     required: true,
-    // },
+    // email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    surname: { type: String, required: false },
+    firstname: { type: String, required: false },
+    middlename: { type: String },
+    gender: { type: String, required: false },
+    birth_date: { type: Date, required: false },
+    phone: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         trim: true,
+        required: true,
         lowercase: true,
         unique: true,
         // eslint-disable-next-line no-useless-escape
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
             "Please fill a valid email address"],
-    },
+    }
     // created_by: { type: ObjectId, ref: "Staff", required: true },
     // updated_by: { type: ObjectId, ref: "Staff" },
-    password: { type: String, required: true }
+    // password: { type: String, required: true }
 });
 
 staffSchema.plugin(uniqueValidator);

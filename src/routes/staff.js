@@ -65,7 +65,11 @@ const userCtrl = require('../controllers/staff');
 
 const router = express.Router();
 
-router.post('/staff', userCtrl.createRecord);
-router.post('/staff/login', userCtrl.login);
+router.post('/', userCtrl.createRecord);
+router.post('/login', userCtrl.login);
+router.get('/', userCtrl.getAll);
+router.put('/:id', userCtrl.updateRecord);
+router.get('/:id', userCtrl.getRecord);
+router.delete('/:id', userCtrl.deleteRecord);
 
 module.exports = router;
