@@ -9,10 +9,11 @@ const path = require('path');
 const stuffRoutes = require('./src/routes/stuff');
 const userRoutes = require('./src/routes/user');
 const staffRoutes = require('./src/routes/staff');
+const bookRoutes = require('./src/routes/book');
 
 const app = express();
-
-mongoose.connect('mongodb+srv://ikenna:pato7286@cluster0-tbb51.mongodb.net/flight?retryWrites=true&w=majority')
+const uri = 'mongodb+srv://ikenna:pato7286@cluster0-tbb51.mongodb.net/flight?retryWrites=true&w=majority';
+mongoose.connect(uri, { useFindAndModify: false })
 .then(() => {
     console.log('Successfully connected to mongoDB Atlas!');
 })
@@ -38,5 +39,6 @@ app.use((req, res, next) => {
   app.use('/api/stuff', stuffRoutes);
   app.use('/api/auth', userRoutes);
   app.use('/api/staff', staffRoutes);
+  app.use('/api/book', bookRoutes);
 
 module.exports = app;
