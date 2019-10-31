@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
     "dev": "npm run webpack -- --mode development --watch",
-    "build": "babel src -d build",
-    "dist": "babel src -d dist",
+    "build": "npm run dist",
     "start": "npm run dist && nodemon dist/index.js",
     "doc": "apidoc -o public/apidoc",
     "mydoc": "apidoc -o public"
