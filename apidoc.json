@@ -4,7 +4,7 @@
     "description": "API for flight management",
     "apidoc": {
         "title": "Flight ApiDoc",
-    "url" : "https://shop-api-doc.herokuapp.com/"
+    "url" : "https://flight-backend.herokuapp.com/"
     }
   }
   

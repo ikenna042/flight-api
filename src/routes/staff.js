@@ -30,7 +30,7 @@ const router = express.Router();
  * @apiUse UserError
  * @apiDescription This holds all record of staff.
  */
-router.post('/', userCtrl.createRecord);
+router.post('/', staffCtrl.createRecord);
 
 /**
  * @api {post} /api/staff/login Login staff
@@ -61,7 +61,7 @@ router.post('/login', staffCtrl.login);
  * @apiSuccess {Object[]} Array of Objects of records.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get('/', userCtrl.getAll);
+router.get('/', staffCtrl.getAll);
 
 /**
  * @api {get} /api/staff?id={recordId} Retrieve all records
@@ -78,7 +78,7 @@ router.get('/', userCtrl.getAll);
  * @apiSuccess {Object[]} Array of Objects of records.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get('/:id', userCtrl.getRecord);
+router.get('/:id', staffCtrl.getRecord);
 
 /**
  * @api {post} /api/staff/{recordId} Update Staff
@@ -100,7 +100,7 @@ router.get('/:id', userCtrl.getRecord);
  * @apiUse UserError
  * @apiDescription This holds all record of staff.
  */
-router.put('/:id', userCtrl.updateRecord);
+router.put('/:id', staffCtrl.updateRecord);
 
 /**
  * @api {delete} /api/staff/{recordId} Delete Staff
@@ -112,6 +112,6 @@ router.put('/:id', userCtrl.updateRecord);
  * @apiError 404 Thing not found.
  * @apiError 401 master access only.
  */
-router.delete('/:id', userCtrl.deleteRecord);
+router.delete('/:id', staffCtrl.deleteRecord);
 
 module.exports = router;
