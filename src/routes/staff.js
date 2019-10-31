@@ -1,7 +1,7 @@
-// const express = require('express');
-// const router = express.Router();
+const express = require('express');
+const staffCtrl = require('../controllers/staff');
 
-// const userCtrl = require('../controllers/staff');
+const router = express.Router();
 
 /**
  * @apiDefine UserError
@@ -11,65 +11,107 @@
  */
 
 /**
- * @api {post} /api/stuff Create user
- * @apiVersion 0.2.0
- * @apiName CreateUser
- * @apiGroup User
+ * @api {post} /api/staff Create Staff
+ * @apiName CreateStaff
+ * @apiGroup Staff
  * @apiHeader {String} Authorization Bearer token
- * @apiParam {String} [email] Email of the user (required)
- * @apiParam {String} [password] Password of the user (required)
+ * @apiParam {String} [surname] Surname of the staff
+ * @apiParam {String} [firstname] firstname of the staff
+ * @apiParam {String} [middlename] middlename of the staff
+ * @apiParam {String} [gender] gender of the staff
+ * @apiParam {String} [birth_date] birth_date of the staff
+ * @apiParam {String} [phone] phone number of the staff
+ * @apiParam {String} [email] Email of the staff
+ * @apiParam {String} [password] Password of the staff
  * @apiSuccess {String} email Email of the User
  * @apiSuccessExample Success-Response:
  *      HTTP/1.1 201 OK
  * 
  * @apiUse UserError
- * @apiDescription This holds all record of users.
+ * @apiDescription This holds all record of staff.
  */
-// router.post('/signup', userCtrl.createRecord);
-
-/**
- * @api {post} /api/stuff Login user
- * @apiVersion 0.2.0
- * @apiName LoginUser
- * @apiGroup User
- * @apiHeader {String} Authorization Bearer token
- * @apiParam {String} [email] Email of the user (required)
- * @apiParam {String} [password] Password of the user (required)
- * @apiSuccessExample Success-Response:
- *      HTTP/1.1 201 OK
- * 
- * @apiUse UserError
- */
-// router.post('/login', userCtrl.login);
-
-/**
- * @api {post} /api/stuff Create example
- * @apiVersion 0.2.0
- * @apiName LoginExample
- * @apiGroup Example
- * @apiHeader {String} Authorization Bearer token
- * @apiParam {String} email Email of the example (required)
- * @apiParam {String} [password] Password of the example (required)
- * @apiSuccessExample Success-Response:
- *      HTTP/1.1 201 OK
- * 
- * @apiUse UserError
- */
-
-// module.exports = router;
-
-const express = require('express');
-const userCtrl = require('../controllers/staff');
-// import { checkAuth, isValidStaff } from "../middleware/authorization";
-// import { createRecord, login } from "../controllers/staff";
-
-const router = express.Router();
-
 router.post('/', userCtrl.createRecord);
-router.post('/login', userCtrl.login);
+
+/**
+ * @api {post} /api/staff/login Login staff
+ * @apiName LoginStaff
+ * @apiGroup Staff
+ * @apiHeader {String} Authorization Bearer token
+ * @apiParam {String} [email] Email of the staff
+ * @apiParam {String} [password] Password of the staff
+ * @apiSuccessExample Success-Response:
+ *      HTTP/1.1 201 OK
+ * 
+ * @apiUse UserError
+ */
+router.post('/login', staffCtrl.login);
+
+/**
+ * @api {get} /api/staff Retrieve all records
+ * @apiName RetrieveStaff
+ * @apiGroup Staff
+* @apiExample {curl} Example usage for retieving records:
+ *      curl -i api/staff?
+ * @apiParam {Object} filter query condition (optional)
+ * @apiParam {Number} skip Number of records to offset by (optional)
+ * @apiParam {Number} limit Maximum Number of records to retrieve (optional)
+ * @apiParam {String} sort how records would be arranged in alphabet (optional)
+ * @apiParam {String} projection list of record's attributes to retrieve (optional)
+ * @apiDescription Records  of staff
+ * @apiSuccess {Object[]} Array of Objects of records.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ */
 router.get('/', userCtrl.getAll);
-router.put('/:id', userCtrl.updateRecord);
+
+/**
+ * @api {get} /api/staff?id={recordId} Retrieve all records
+ * @apiName RetrieveStaff
+ * @apiGroup Staff
+* @apiExample {curl} Example usage for retieving a single record:
+ *      curl -i api/staff?
+ * @apiParam {Object} filter query condition (optional)
+ * @apiParam {Number} skip Number of records to offset by (optional)
+ * @apiParam {Number} limit Maximum Number of records to retrieve (optional)
+ * @apiParam {String} sort how records would be arranged in alphabet (optional)
+ * @apiParam {String} projection list of record's attributes to retrieve (optional)
+ * @apiDescription Records  of staff
+ * @apiSuccess {Object[]} Array of Objects of records.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ */
 router.get('/:id', userCtrl.getRecord);
+
+/**
+ * @api {post} /api/staff/{recordId} Update Staff
+ * @apiName UpdateStaff
+ * @apiGroup Staff
+ * @apiHeader {String} Authorization Bearer token
+ * @apiParam {String} [surname] Surname of the staff
+ * @apiParam {String} [firstname] firstname of the staff
+ * @apiParam {String} [middlename] middlename of the staff
+ * @apiParam {String} [gender] gender of the staff
+ * @apiParam {String} [birth_date] birth_date of the staff
+ * @apiParam {String} [phone] phone number of the staff
+ * @apiParam {String} [email] Email of the staff
+ * @apiParam {String} [password] Password of the staff
+ * @apiSuccess {String} email Email of the User
+ * @apiSuccessExample Success-Response:
+ *      HTTP/1.1 201 OK
+ * 
+ * @apiUse UserError
+ * @apiDescription This holds all record of staff.
+ */
+router.put('/:id', userCtrl.updateRecord);
+
+/**
+ * @api {delete} /api/staff/{recordId} Delete Staff
+ * @apiName DeleteStaff
+ * @apiGroup Staff
+ * @apiHeader {String} Authorization Bearer token
+ * @apiParam {ObjectId} recordId required record ObjectId
+ * @apiSuccess (Success 204) 204 No Content.
+ * @apiError 404 Thing not found.
+ * @apiError 401 master access only.
+ */
 router.delete('/:id', userCtrl.deleteRecord);
 
 module.exports = router;

@@ -1,9 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// const Joi = require('@hapi/joi');
 const Staff = require('../models/staff');
-// import Staff, { schemaCreate, schemaUpdate, schemaLogin } from "../models/staff";
 
 exports.createRecord = (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(
@@ -20,7 +18,8 @@ exports.createRecord = (req, res, next) => {
             staff.save().then(
                 () => {
                     res.status(201).json({
-                        message: 'Staff added successfully!'
+                        message: 'Staff added successfully!',
+                        staff
                     });
                 }
             ).catch(

@@ -20,7 +20,7 @@ const bookSchema = mongoose.Schema({
     to: { type: String, required: true },
     class: { type: String, required: true },
     price: { type: Number },
-    payment: { type: String, required: true },
+    payment: { type: String, required: false },
     staffId: { type: String }
 });
 

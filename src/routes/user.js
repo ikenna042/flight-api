@@ -12,7 +12,6 @@ const userCtrl = require('../controllers/user');
 
 /**
  * @api {post} /api/stuff Create user
- * @apiVersion 0.2.0
  * @apiName CreateUser
  * @apiGroup User
  * @apiHeader {String} Authorization Bearer token
@@ -29,7 +28,6 @@ router.post('/signup', userCtrl.signup);
 
 /**
  * @api {post} /api/stuff Login user
- * @apiVersion 0.2.0
  * @apiName LoginUser
  * @apiGroup User
  * @apiHeader {String} Authorization Bearer token
@@ -44,11 +42,10 @@ router.post('/login', userCtrl.login);
 
 /**
  * @api {post} /api/stuff Create example
- * @apiVersion 0.2.0
  * @apiName LoginExample
  * @apiGroup Example
  * @apiHeader {String} Authorization Bearer token
- * @apiParam {String} email Email of the example (required)
+ * @apiParam {String} [email] Email of the example (required)
  * @apiParam {String} [password] Password of the example (required)
  * @apiSuccessExample Success-Response:
  *      HTTP/1.1 201 OK
