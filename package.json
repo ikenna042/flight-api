@@ -8,7 +8,7 @@
     "webpack": "webpack",
     "dev": "npm run webpack -- --mode development --watch",
     "build": "npm run dist",
-    "start": "npm run dist && nodemon dist/index.js",
+    "start": "nodemon server",
     "doc": "apidoc -o public/apidoc",
     "mydoc": "apidoc -o public"
   },
