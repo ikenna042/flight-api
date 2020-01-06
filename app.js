@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
 
 const stuffRoutes = require('./src/routes/stuff');
 const userRoutes = require('./src/routes/user');
@@ -21,6 +22,8 @@ mongoose.connect(uri, { useFindAndModify: false })
     console.log('Unable to connect to mongoDB Atlas');
     console.error(error);
 });
+
+app.use(cors());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
